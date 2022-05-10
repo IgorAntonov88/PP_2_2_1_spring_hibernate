@@ -16,14 +16,13 @@ public class MainApp {
 
       UserService userService = context.getBean(UserService.class);
 
-      Car car1 = new Car("BMW",323);
-      Car car2 = new Car("AUDI",8);
-      Car car3 = new Car("Mercedes",212);
-
       userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
       userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
       userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
       userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
+      userService.add(new User("User5", "Lastname5", "user5@mail.ru", new Car("Mercedes", 220)));
+      userService.add(new User("User6", "Lastname6", "user6@mail.ru", new Car("AUDI", 6)));
+      userService.add(new User("User7", "Lastname7", "user7@mail.ru", new Car("BNW", 7)));
 
       List<User> users = userService.listUsers();
       for (User user : users) {
@@ -31,8 +30,13 @@ public class MainApp {
          System.out.println("First Name = "+user.getFirstName());
          System.out.println("Last Name = "+user.getLastName());
          System.out.println("Email = "+user.getEmail());
+         System.out.println("Car = " + user.getCar());
          System.out.println();
       }
+      System.out.println();
+      System.out.println("По запросу найдено: ");
+      User userByCar = userService.getUserByCar("AUDI", 6);
+      System.out.println(userByCar);
 
       context.close();
    }
