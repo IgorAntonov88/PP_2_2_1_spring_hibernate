@@ -21,11 +21,9 @@ public class Car {
     public Car() {
     }
 
-    public Car(Long id, String model, int series, User user) {
-        this.id = id;
+    public Car(String model, int series) {
         this.model = model;
         this.series = series;
-        this.user = user;
     }
 
     public Long getId() {
@@ -58,15 +56,5 @@ public class Car {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", model='" + model + '\'' +
-                ", series=" + series +
-                ", user=" + user +
-                '}';
     }
 }
